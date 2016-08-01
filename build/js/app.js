@@ -22,6 +22,10 @@ Calculator.prototype.add = function(num1, num2) {
   return (num1+num2);
 };
 
+Calculator.prototype.subtract = function(num1, num2) {
+  return num1 - num2;
+};
+
 exports.calculatorModule = Calculator;
 
 },{}],2:[function(require,module,exports){
@@ -39,13 +43,23 @@ $(document).ready(function(event) {
     });
   });
 
-  $("#addition-form").submit(function(event) {
+  $("#add").click(function(event) {
     event.preventDefault();
     $("#solution").empty();
     var num1 = parseInt($("#num1").val());
     var num2 = parseInt($("#num2").val());
     var simpleCalculator = new Calculator();
     var output = simpleCalculator.add(num1, num2);
+    $('#solution').append("<li>" + output + "</li>");
+  });
+
+  $("#sub").click(function(event){
+    event.preventDefault();
+    $("#solution").empty();
+    var num1 = parseInt($("#num1").val());
+    var num2 = parseInt($("#num2").val());
+    var simpleCalculator = new Calculator();
+    var output = simpleCalculator.subtract(num1, num2);
     $('#solution').append("<li>" + output + "</li>");
   });
 });
